@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <meta name="viewpoint" content="width=device-width,initial-scale=1">
+    <!--Use this to make the font-size to adapt the screen size automatically.when the user zoom the screen-->
+</head>
+
+<body>
+
+<div id="top_img">
+    <a href="#top">
+        <img  src="/img/Top.jpg"  alt="top" >
+    </a>
+</div>
+
+<div class="title">
+    <h2>Registration</h2>
+    <!--/*@thymesVar id="msg" type="java.lang.String"*/-->
+    <p style="color: red; margin: 0 auto; text-align: center" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+</div>
+
+<!--/*@thymesVar id="user" type="com.cse208.Entity.User"*/-->
+<form th:action="@{/register}" th:object="${user}" method="post">
+
+     <div id="userName">
+    <p>Username<span>*</span></p>
+    <input type="text" name="name" required="required"/>
+      </div>
+
+    <div id="password">
+        <p>Password<span>*</span></p>
+        <input type="text" id="pw" name="pwd" required="required"/>
+        <span id="two"></span>
+    </div>
+
+    <script type="text/javascript">
+
+        function password(){
+            var reg=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*?[#?!()@$%^&*-.]).{6,}$/;
+
+            if( !reg.test( document.getElementById("pw").value ) )
+                document.getElementById("two").innerHTML="Wrong (At least 6, one upper and one lower case letter, one number and one special character #?!()@$%^&*-. )";
+            else
+                document.getElementById("two").innerHTML="Correct";
+        }
+
+    </script>
+
+
+    <div id="reEnter">
+        <p>Re-enter password<span>*</span></p>
+        <div class="Re-enter-input">
+            <input type="password" name="re_pwd" required="required" onclick="password()"/>
+        </div> 
+         </div>
+
+
+
+    <script type="text/javascript"  src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#question .others').click(function () {
+                $(this).addClass('add')
+                $("#question  input").show();
+            })
+        })
+    </script>
+
+    <script type="text/javascript">
+        function show(){
+            let v=document.getElementById("select").value;
+            let t=document.getElementById("questionInput");
+
+            if(v == 3){
+                t.style.display="";
+                $("#quest").attr("required",true);
+            }else{
+                t.style.display="none";
+                $("#quest").attr("required",false);
+            }
+        }
+    </script>
+
+    <div id="secretQuestion">
+        <p> Select Question<span>*</span></p>
+        <select name="qusId" id="select" onchange="show()" lay-verify="required">
+            <option value = 0>favorite color</option>
+            <option value = 1>favorite food</option>
+            <option value = 2>favorite country</option>
+            <option value = 3>Others</option>
+        </select>
+            </div>
+
+    <div style="display: none;" id="questionInput">
+        <input type="text" name="quest" id="quest" placeholder="Enter the question " />
+    </div>
+
+
+    <div id="secretAnswer">
+        <p> Answer Question<span>*</span></p>
+        <div class="secretAnswer-input">
+            <input type="text" name="ans" />
+        </div>     
+    </div>
+
+    <div id="confirm">
+        <div id="submit">
+                <input type="submit" value="Submit"  />
+        </div>
+
+        <div id="reset">
+                <input type="reset" value="Reset" />
+        </div>
+         
+    </div>
+</form>
+
+</body>
+</html>

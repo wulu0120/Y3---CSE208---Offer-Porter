@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Upload</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/uploadCSS.css}" href="uploadCSS.css">
+
+		<meta name="viewpoint" content="width=device-width,initial-scale=1">
+		<!--Use this to make the font-size to adapt the screen size automatically.when the user zoom the screen-->
+
+
+		<script type="text/javascript"  src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+				<script type="text/javascript">
+				 $(function () {
+					   $('#language li').click(function () {
+					     $(this).addClass('active').siblings().removeClass('active');
+							 var index=$(this).index();
+							  $("#languageInput div").eq(index).show().siblings().hide();
+				      })
+					 })
+				</script>
+
+				<script type="text/javascript">
+				 $(function () {
+					   $('#gre li').click(function () {
+					     $(this).addClass('active').siblings().removeClass('active');
+							 var index=$(this).index();
+							  $("#greInput div").eq(index).show().siblings().hide();
+				      })
+					 })
+				</script>
+
+				<script type="text/javascript">
+				 $(function () {
+						 $('#country .others').click(function () {
+							 $(this).addClass('add')
+								$("#country input").show();
+							})
+					 })
+				</script>
+
+				<script type="text/javascript">
+				function show(){
+				var v=document.getElementById("select").value;
+				var t=document.getElementById("countryInput");
+				if(v=="others"){
+				t.style.display="";
+				}else{
+				t.style.display="none";
+				}
+				}
+				</script>
+	</head>
+
+
+	<body>
+
+		<form th:action="@{/user/upload}" enctype="multipart/form-data"  method="post">
+			<div id="top_img">
+				<a href="#top">
+					<img th:src="@{/img/top.jpg}" src="images/top.jpg"  alt="top">
+				</a>
+			</div>
+
+			<div class="title">
+				<h2 >Upload Your Offer</h2>
+			</div>
+
+			<div class="background">
+				<p>Background</p>
+			</div>
+
+
+			 <div id="userName">
+			   <p>Username<span>*</span></p>
+			<input type="text" name="username"  required="required"/>
+			  </div>
+
+
+			<div id="graduateSchool">
+				<p>Graduate School<span>*</span></p>
+				<input type="text" name="graduateSchool" required="required"/>
+			</div>
+
+
+			<div id="currentMajor">
+				<p>Current Major<span>*</span></p>
+				<input type="text" name="currentMajor" required="required"/>
+			 </div>
+
+			<div id="gpa">
+				<p>GPA<span>*</span></p>
+				<input type="text" id="gpa1" name="gpa" required="required" onkeyup="gpaCheck()"></input>
+				<span id="gpaTest"></span>
+				<script type="text/javascript">
+            function gpaCheck(){
+                    if( isNaN(document.getElementById("gpa1").value) ) {
+                        document.getElementById("gpaTest").innerHTML="Must be number !";
+                    }
+                    else if(document.getElementById("gpa1").value>4){
+                        document.getElementById("gpaTest").innerHTML="Must between 0 and 4 !";
+                    }else if(document.getElementById("gpa1").value<0){
+                        document.getElementById("gpaTest").innerHTML="Must between 0 and 4 !";
+                    }else {
+                    	document.getElementById("gpaTest").innerHTML="";
+                    }
+                }
+            </script>
+
+		 	</div>
+
+
+			<div id="language">
+				<ul>
+					<li class="active">TOEFL</li>
+					<li>IELTS</li>
+					<li><span>*</span></li>
+		 		</ul>
+		 	</div>
+
+		<div id="languageInput">
+			<div><input type="text" id="TOEFL" name="TOEFL"  placeholder="Enter TOEFL score" onkeyup="TOEFLCheck()"></input>
+				<span id="TOEFLTest"></span>
+			</div>
+
+				<script type="text/javascript">
+            function TOEFLCheck(){
+                    if( isNaN(document.getElementById("TOEFL").value) ) {
+                        document.getElementById("TOEFLTest").innerHTML="Must be number !";
+                    }
+                    else if(document.getElementById("TOEFL").value>120){
+                        document.getElementById("TOEFLTest").innerHTML="Must between 0 and 120 !";
+                    }else if(document.getElementById("TOEFL").value<0){
+                        document.getElementById("TOEFLTest").innerHTML="Must between 0 and 120 !";
+                    }else {
+                    	document.getElementById("TOEFLTest").innerHTML="";
+                    }
+                }
+            </script>
+
+
+			<div id="IELTS">
+				  <select name="IELTS" id="IELTS" onchange="show()" lay-verify="required">
+					<option value ="0">0</option>
+					<option value ="1.0">1.0</option>
+					<option value ="2.0">2.0</option>
+					<option value ="2.5">2.5</option>
+					<option value ="3.0">3.0</option>
+					<option value ="3.5">3.5</option>
+					<option value ="4.0">4.0</option>
+					<option value ="4.5">4.5</option>
+					<option value ="5.0">5.0</option>
+					<option value ="5.5">5.5</option>
+					<option value ="6.0">6.0</option>
+					<option value ="6.5">6.5</option>
+					<option value ="7.0">7.0</option>
+					<option value ="7.5">7.5</option>
+					<option value ="8.0">8.0</option>
+					<option value ="8.5">8.5</option>
+					<option value ="9.0">9.0</option>
+					
+			  	</select>
+		 </div>
+			
+		</div>
+
+
+		<div id="gre">
+			<ul>
+				<li class="active">GRE</li>
+				<li>GMAT</li>
+     		</ul>
+		 </div>
+
+		<div id="greInput">
+			<div><input type="text" name="gre" placeholder="Enter GRE score" onclick="greCheck()">
+      <span id="greTest" style="color: #5B9BE3"></span>
+			</div>
+			<script type="text/javascript">
+				function greCheck(){
+
+									document.getElementById("greTest").innerHTML="In 'x+x' format";
+
+						}
+				</script>
+
+			<div><input type="text" id="gmat" name="gmat" placeholder="Enter GMAT score" onkeyup="gmatCheck()"></input>
+				<span id="gmatTest"></span>
+				</div>
+				<script type="text/javascript">
+					function gmatCheck(){
+									if( isNaN(document.getElementById("gmat").value) ) {
+											document.getElementById("gmatTest").innerHTML="Must be number !";
+									}
+									else if(document.getElementById("gmat").value>800){
+											document.getElementById("gmatTest").innerHTML="Must between 200 and 800 !";
+									}else if(document.getElementById("gmat").value<200){
+											document.getElementById("gmatTest").innerHTML="Must between 200 and 800 !";
+									}else {
+										document.getElementById("gmatTest").innerHTML="";
+									}
+							}
+					</script>
+		</div>
+
+		<div id="experience">
+			<p>Experience</p>
+				<input type="text" name="experience" />
+		 </div>
+
+
+		<div class="offerInfo">
+			<p>Offer Information</p>
+		</div>
+
+
+
+		<div id="masterSchool">
+			<p>Master School<span>*</span></p>
+				<input type="text" name="masterSchool" required="required"/>
+		 </div>
+
+		<div id="admittedMajor">
+			<p>Admitted Major<span>*</span></p>
+				<input type="text" name="admittedMajor" required="required"/>
+		 </div>
+
+
+
+		<div id="pic">
+			<p>Offer Picture</p>
+				<input type="file" name="file"/>
+		 </div>
+
+		<div id="confirm">
+			<div id="submit">
+			    <input type="submit" value="Submit"/>
+			  </div>
+
+			<div id="reset">
+			    <input type="reset" value="Reset"/>
+			</div>
+		</div>
+
+	  </form>
+	</div>
+
+
+	</body>
+</html>

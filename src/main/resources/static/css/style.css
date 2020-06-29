@@ -1,0 +1,179 @@
+/* clean */
+  * {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(240, 242, 245, 0.5);
+  }
+
+#top_img{
+  background-color: white;
+}
+
+#top_img img{
+  height: 100px;
+  width: 300px;
+}
+
+.title{
+  margin-top: 100px;
+
+}
+
+.title h2{
+  width: 500px;
+  height: 70px;
+  /* background-color: green; */
+  margin: 0 auto;
+}
+
+#userName{
+ width: 500px;
+ margin: 0 auto;
+ margin-bottom: 40px;
+}
+
+#userName p{
+height: 35px;
+width: 290px;
+font-size: 20px;
+}
+
+#userName p span{
+color: red;
+}
+
+#userName input{
+height: 40px;
+width: 500px;
+font-size: 20px;
+border: 1px solid #797979;
+}
+
+#password{
+ width: 500px;
+ margin: 0 auto;
+ margin-bottom: 50px;
+}
+
+#password p{
+height: 35px;
+width: 290px;
+font-size: 20px;
+}
+
+#password span{
+    color: red;
+}
+
+#password p span{
+color: red;
+}
+
+#password input{
+height: 40px;
+width: 500px;
+font-size: 20px;
+border: 1px solid #797979;
+}
+
+#reEnter{
+ width: 500px;
+ margin: 0 auto;
+ margin-bottom: 40px;
+}
+
+#reEnter p{
+height: 35px;
+width: 290px;
+font-size: 20px;
+}
+
+#reEnter p span{
+color: red;
+}
+
+#reEnter input{
+height: 40px;
+width: 500px;
+font-size: 20px;
+border: 1px solid #797979;
+}
+
+select, input{
+height: 40px;
+width: 500px;
+font-size: 20px;
+border: 1px solid #797979;
+background-color: white;
+}
+
+#secretQuestion, #questionInput{
+ width: 500px;
+ margin: 0 auto;
+ margin-top: 0;
+ margin-top: 40px;
+}
+
+#secretQuestion p , #questionInput p{
+height: 35px;
+width: 290px;
+font-size: 20px;
+}
+
+#secretQuestion p span{
+color: red;
+}
+
+#questionInput{
+  margin-top: 0px;
+}
+
+#secretAnswer{
+ width: 500px;
+ margin: 0 auto;
+ margin-top: 40px;
+}
+
+#secretAnswer p{
+height: 35px;
+width: 290px;
+font-size: 20px;
+}
+
+#secretAnswer p span{
+color: red;
+}
+
+#secretAnswer input{
+height: 40px;
+width: 500px;
+font-size: 20px;
+border: 1px solid #797979;
+}
+
+#confirm{
+ width: 500px;
+ height: 40px;
+ margin: 0 auto;
+ margin-bottom: 40px;
+}
+
+#submit input{
+height: 40px;
+width: 200px;
+font-size: 20px;
+border-radius: 5px;
+background-color: #5B9BE3;
+color: white;
+margin-left: 130px;
+}
+
+#reset input{
+height: 40px;
+width: 200px;
+font-size: 20px;
+border: 1px solid #5B9BE3;
+border-radius: 5px;
+margin-left: 130px;
+margin-top: 20px;
+}

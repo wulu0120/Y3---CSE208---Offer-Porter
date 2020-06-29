@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, iniitial-scale=1.0">
+    	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Authenticate</title>
+		<link th:href="@{/css/findPassword.css}" rel="stylesheet">
+	</head>
+
+	<body>
+
+		<form class="form-signin" th:action="@{/checkAns}" method="post">
+		<div id="top_img">
+			<a href="#top">
+				<img th:src="@{/img/top.jpg}" alt="top">
+			</a>
+		</div>
+		<div class="container">
+			<h1 class="" >Verification</h1>
+			<div class="display">
+				<!-- 用户名 -->
+				<p th:text="${msg}"></p>
+				<p style="color: #555555" >Your secret question is:</p>
+				<!-- 用户名对应的问题 -->
+				<p th:text="${sq}"></p>
+			</div>
+
+			<div class="needEnter">
+                <div id="secretAnswer">
+                    <p>Secret Answer:<span>*</span><p>
+                    <div class="secretAnswer-input">
+                        <input type="text" name="answer" placeholder="Please enter the answer" class="" required="required"/>
+                    </div>   
+                </div>
+			</div>
+			
+			<div class="warning">
+				<p th:text="${warn}" th:if="${not #strings.isEmpty(warn)}"></p>
+				<!--如果回答错误 提示重输 -->
+				<!-- Your answer is wrong, please re-enter. -->
+			</div>
+
+        	<div id="nextStage">
+                <button type="submit" class="" value="submit">Reset Password</button>
+		 	</div>
+		</div>
+		</form>
+	</body>
+</html>

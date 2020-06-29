@@ -1,0 +1,187 @@
+/* clean */
+  * {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(241, 243, 246, 1);
+  }
+
+#top_img{
+  background-color: white;
+}
+
+#top_img img{
+  height: 100px;
+  width: 300px;
+}
+
+.title{
+  margin-top: 100px;
+
+}
+
+.title h2{
+  width: 800px;
+  height: 70px;
+  /* background-color: green; */
+  margin: 0 auto;
+}
+
+.background{
+  margin: 0 auto;
+  color: #5B9BE3;
+  width: 800px;
+  font-size: 17px;
+  border-bottom: 1px solid #5B9BE3;
+
+}
+
+.offerInfo{
+  margin: 0 auto;
+  color: #5B9BE3;
+  width: 800px;
+  font-size: 17px;
+  border-bottom: 1px solid #5B9BE3;
+  margin-top: 80px;
+
+}
+
+#userName,#graduateSchool,#currentMajor,#gpa,#language,#gre, #suggestion, #experience,
+#applyTime, #admissionTime, #country, #countryInput, #masterSchool ,#admittedMajor ,#source ,#result ,#pic{
+ width: 500px;
+ margin: 0 auto;
+ margin-top: 40px;
+}
+
+#userName p,#graduateSchool p,#currentMajor p,#gpa p,#gre p,
+#suggestion p, #experience p, #applyTime p, #admissionTime p, #country p, #masterSchool p, #admittedMajor p,
+#source p, #result p, #pic p{
+height: 35px;
+width: 290px;
+font-size: 20px;
+}
+
+span{
+color: red;
+}
+
+select, input{
+height: 40px;
+width: 500px;
+font-size: 20px;
+border: 1px solid #797979;
+background-color: white;
+}
+
+#language ul, #gre ul{
+  padding: 0;
+  margin: 0;
+  margin-bottom: 7px;
+
+  }
+
+#language ul li, #gre ul li{
+  display: inline-block;
+  width: 80px;
+  height: 35px;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 5px;
+  border: 1px solid #5B9BE3;
+  cursor: pointer;
+ }
+
+ #language ul li:last-child{
+   width: 80px;
+   height: 35px;
+   border: 0px;
+   font-size: 20px;
+   padding-left: 0;
+   margin-left: 0;
+   text-align: left;
+  }
+
+#language ul li.active,#gre ul li.active{
+  color: white;
+  background: #5B9BE3;
+  }
+
+#languageInput div, #greInput div{
+  width: 500px;
+  height: 40px;
+  display: none;
+  margin: 0 auto;
+  }
+
+
+#languageInput div:first-child, #greInput div:first-child{
+  display: block;
+ }
+
+#countryInput{
+  margin-top: 0;
+}
+
+#suggestion input, #experience input{
+  height: 100px;
+}
+
+
+#source input{
+  vertical-align:middle;
+  margin-top:-2px;
+  margin-bottom:1px;
+  margin-right: 2px;
+  width: 25px;
+  display: inline-block;
+}
+
+#source label{
+  margin-right: 20px;
+}
+
+#result input{
+  vertical-align:middle;
+  margin-top:-2px;
+  margin-bottom:1px;
+  width: 25px;
+  display: inline-block;
+}
+
+#result label{
+  margin-right: 20px;
+}
+
+#pic .file{
+  display: none;
+}
+
+
+#confirm{
+ width: 500px;
+ height: 40px;
+ margin: 0 auto;
+ margin-bottom: 40px;
+ margin-top: 50px;
+ background-color: rgba(240, 242, 245, 0.5);
+}
+
+#submit input{
+height: 40px;
+width: 200px;
+font-size: 20px;
+border-radius: 5px;
+background-color: #5B9BE3;
+color: white;
+margin-left: 130px;
+}
+
+#reset input{
+height: 40px;
+width: 200px;
+font-size: 20px;
+border: 1px solid #5B9BE3;
+background-color: white;
+border-radius: 5px;
+margin-left: 130px;
+margin-top: 20px;
+}

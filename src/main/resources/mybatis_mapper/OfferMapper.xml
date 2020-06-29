@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cse208.mapper.OfferMapper">
+
+    <!-- 筛选offer: 根据 username 选择出对应的 offer, 多条则由offerId升序排列 -->
+    <select id="getOfferByUsername" parameterType="String">
+        select * from mybatis.offer where username = #{username} order by offerId;
+    </select>
+
+    <!-- 插入 offer -->
+    <insert id="setOneOffer" parameterType="Offer">
+        insert into mybatis.offer (uId, username, graduateSchool, currentMajor, gpa, TOEFL, IELTS, gre, gmat, experience,
+                                masterSchool, admittedMajor)
+        values (#{uId}, #{username}, #{graduateSchool}, #{currentMajor}, #{gpa}, #{TOEFL}, #{IELTS}, #{gre}, #{gmat}, #{experience},
+                 #{masterSchool}, #{admittedMajor});
+    </insert>
+
+    <!-- 删除offer：根据用户name和 offerId -->
+    <delete id = "deleteOffer" parameterType="Offer">
+        DELETE FROM mybatis.offer WHERE username = #{username} and offerId = #{offerId};
+    </delete>
+
+    <!-- 更新offer -->
+    <update id="updateOffer" parameterType="Offer">
+        update mybatis.offer
+        <set>
+            <if test="uId != null"> uId = #{uId}, </if>
+            <if test="username != null"> username = #{username}, </if>
+            <if test="graduateSchool != null"> graduateSchool = #{graduateSchool}, </if>
+            <if test="currentMajor != null"> currentMajor = #{currentMajor}, </if>
+            <if test="gpa != null"> gpa = #{gpa}, </if>
+            <if test="TOEFL != null"> TOEFL = #{TOEFL}, </if>
+            <if test="IELTS != null"> IELTS = #{IELTS}, </if>
+            <if test="gre != null"> gre = #{gre}, </if>
+            <if test="gmat != null"> gmat = #{gmat}, </if>
+            <if test="experience != null"> experience = #{experience}, </if>
+            <if test="suggestion != null"> suggestion = #{suggestion}, </if>
+
+            <if test="applyTime != null"> applyTime = #{applyTime}, </if>
+            <if test="admissionTime != null"> admissionTime = #{admissionTime}, </if>
+            <if test="country != null"> country = #{country}, </if>
+            <if test="masterSchool != null"> masterSchool = #{masterSchool}, </if>
+            <if test="admittedMajor != null"> admittedMajor = #{admittedMajor}, </if>
+            <if test="source != null"> source = #{source}, </if>
+            <if test="result != null"> result = #{result} </if>
+        </set>
+        where offerId = #{offerId}
+    </update>
+
+    <!--获取全部offer-->
+    <select id="getAllOffer" resultType="Offer">
+       select o.currentMajor, o.gpa, o.TOEFL, o.IELTS, o.gre, o.gmat, o.masterSchool, o.admittedMajor, o.experience
+       from mybatis.offer o
+    </select>
+
+    <!--根据关键字删选offer-->
+    <select id="getOfferByInput" resultType="Offer" parameterType="String">
+        select o.currentMajor, o.gpa, o.TOEFL, o.IELTS, o.gre, o.gmat, o.masterSchool, o.admittedMajor, o.experience
+        from mybatis.offer o
+        <where>
+            <if test="keyword!=null and keyword!=''"> o.currentMajor like concat('%',#{keyword},'%')</if>
+            <if test="keyword!=null and keyword!=''">or o.masterSchool like concat('%',#{keyword},'%')</if>
+            <if test="keyword!=null and keyword!=''">or o.admittedMajor like concat('%',#{keyword},'%')</if>
+        </where>
+    </select>
+</mapper>

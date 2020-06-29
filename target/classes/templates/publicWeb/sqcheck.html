@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, iniitial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log in</title>
+    <link th:href="@{/css/l-css.css}" rel="stylesheet">
+</head>
+
+<body>
+<div id="top_img">
+    <a href="#top">
+        <img class="mb-4" th:src="@{/img/Top.jpg}" src="../img/Top.jpg" style="height:150px; width:400px;" alt="top">
+    </a>
+</div>
+
+<form class="form-signin" th:action="@{/getAns}" method="post">
+    <div class="main-part">
+        <div class="container">
+
+            <div class="needEnter">
+                <div id="userName">
+                    <p>Security Question:<span>*</span><p>
+                    <p>1+1=?</p>
+                    <p th:text="${sq}"></p>
+                </div>
+                <br/>
+                <div id="password">
+                    <p>answer:<span>*</span></p>
+                    <input type="text" name="answer" class="form-control" placeholder="Please enter the answer" required="required"/>
+                </div>
+            </div>
+            <br/>
+
+            <div id="submit">
+                  	<button  class="btn btn-lg btn-primary btn-block" type="submit"> Retrieve password </button>
+            </div>
+
+        </div>
+    </div>
+</form>
+</body>
+
+</html>

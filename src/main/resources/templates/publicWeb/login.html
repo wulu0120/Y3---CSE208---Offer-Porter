@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, iniitial-scale=1.0">
+    	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Log in</title>
+		<link th:href="@{/css/l-css.css}" rel="stylesheet">
+	</head>
+
+	<body>
+		<div id="top_img">
+			<a href="#top">
+				<img class="mb-4" th:src="@{/img/Top.jpg}" src="../img/Top.jpg" style="height:150px; width:400px;" alt="top">
+			</a>
+		</div>
+
+		<form class="form-signin" th:action="@{/login}" method="post">
+			<div class="main-part">
+				<div class="container">
+					<h1>Login</h1>
+
+					<p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+
+					<div class="needEnter">
+						<div id="userName">
+							<p>User Name:<span>*</span><p>
+							<input type="text" name="username" class="form-control" placeholder="Please enter the username" required="required"/>
+						</div>
+						<br/>
+						<div id="password">
+							<p>Password:<span>*</span></p>
+							<input type="password" name="password" class="form-control" placeholder="Please enter the password" required="required"/>
+						</div>
+					</div>
+					<br/>
+
+					<div class="server-part">
+						<div class="Remember-me">
+							<label>
+								<input type="checkbox" name="remember-me">Remember me
+							</label>
+						</div>
+
+						<div class="forgot">
+							<a th:href="@{/forgetPwd}">
+								<p>Foget the password?</p>
+							</a>
+						</div>
+
+						<div class="register">
+						<a th:href="@{/register}">
+							<p>Registration</p>
+						</a>
+						</div>
+					</div>
+
+					<div id="login">
+			  			<button  class="btn btn-lg btn-primary btn-block" type="submit"> Login </button>
+			 		</div>
+
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</form>
+	</body>
+
+</html>

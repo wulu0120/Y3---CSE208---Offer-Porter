@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, iniitial-scale=1.0">
+    	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Reset Password</title>
+		<link th:href="@{/css/findPassword.css}" rel="stylesheet">
+	</head>
+
+	<body>
+		<form class="" th:action="@{/updateUser}"  method="post">
+		<div id="top_img">
+			<a href="#top">
+				<img th:src="@{/img/top.jpg}" alt="top">
+			</a>
+		</div>
+		<div class="container">
+			<h1 class="">Reset Password</h1>
+
+			<div class="display">
+				<!-- 用户名 -->
+				<p th:text="${user}"></p>
+			</div>
+
+			<div class="needEnter">
+                <div id="password">
+                    <p>New Password:<span>*</span></p>
+                        <input type="password" name="password1" class="" required="required" placeholder="Please enter the password"/>
+                </div>
+                <div id="reEnter">
+                    <p>Re-enter the new password<span>*</span></p>
+                    <div class="Re-enter-input">
+                        <input type="password" name="password2" class="" required="required" placeholder="Please re-enter the password"/>
+                    </div> 
+                </div>
+			</div>
+
+			<div class="warning">
+				<p th:text="${warn}" th:if="${not #strings.isEmpty(warn)}"></p>
+				<!-- 两次不一样 提示重输 -->
+				<!-- The second password is not the same as the first one, please re-enter. -->
+			</div>
+
+        	<div id="nextStage">
+                <button type="submit" class="" value="submit"> Back to log in</button>
+		 	</div>
+		</div>
+		</form>
+	</body>
+</html>

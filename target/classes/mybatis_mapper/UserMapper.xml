@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cse208.mapper.UserMapper">
+
+    <!--下面为【增删查改】的对应sql语句，对应 UserMapper.java 文件和 “user”表-->
+    <select id="getAllUsers" resultType="User">
+       select * from mybatis.user
+    </select>
+
+    <select id="getUserById" resultType="User" parameterType="int">
+       select * from  mybatis.user where id = #{id}
+    </select>
+
+    <select id="getUserByName" resultType="User" parameterType="String">
+       select * from  mybatis.user where name = #{name}
+    </select>
+
+    <insert id="addUser" parameterType="User">
+       insert into  mybatis.user (name, pwd) values(#{name}, #{pwd})
+    </insert>
+
+    <update id="updateUser" parameterType="User">
+       update  mybatis.user set pwd=#{pwd} where name = #{name}
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+       delete from  mybatis.user where id = #{id}
+    </delete>
+
+    <insert id="setOneUser" parameterType="User">
+       insert into  mybatis.user (name, pwd, registerDate, qusId, ans, quest) values(#{name}, #{pwd},
+                                 #{registerDate}, #{qusId}, #{ans}, #{quest});
+    </insert>
+
+    <!--更新安全问题-->
+    <update id="updateAns" parameterType="User">
+       update mybatis.user set ans=#{ans} where id = #{id}
+    </update>
+
+    <!--得到安全问题答案-->
+    <select id="getAns" parameterType="User" resultType="String" >
+       select u.ans
+       from mybatis.user u
+       where u.name = #{name}
+    </select>
+
+    <!--得到安全问题-->
+    <select id="getQues" parameterType="User" resultType="String" >
+       SELECT s.question
+       FROM mybatis.user u, mybatis.securityq s
+       WHERE u.qusId = s.qusId and u.name =#{name}
+    </select>
+
+</mapper>

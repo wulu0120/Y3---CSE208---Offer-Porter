@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, iniitial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" type="text/css" href="/css/HomePageCSS.css">
+
+	<title>homepage</title>
+</head>
+<body class="container">
+<form th:action="@{/}"  method="post" name="searchInfo">
+	<div id="top_img">
+		<a href="#top">
+			<img th:src="@{img/Top.jpg}" src="img/Top.jpg"  alt="top">
+		</a>
+	</div>
+
+	<div id="registration">
+		 <button id="registration" type="button"><a href="toPage?url=/publicWeb/register" style="TEXT-DECORATION:none; color: #0056b3;">Registration</a></button>
+	</div>
+
+	<div id="login">
+		    <button id="login" type="button"><a href="toPage?url=/publicWeb/login" style="TEXT-DECORATION:none;color: #0056b3;">Login</a></button>
+	</div>
+
+
+	<div class="search">
+		<div class="text">
+			<br><br><br><br><br><br>
+			<a>Search offers you need!</a>
+		</div>
+
+		<div id="searchBar">
+			<input id="searchIn" th:value="${keyword1}" name = "keyword1" type="text" required="required" placeholder="Search"/>
+			<input name = "page" value="0" type="hidden"  />
+
+			<script type="text/javascript">
+				function formSubmit(){
+					document.searchInfo.submit();
+				}
+			</script>
+			<img  id="searchB" src="img/searchbu.png" onclick = "formSubmit();"/>
+
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+
+
+
+	<div class="main">
+
+		<div class="offer" th:each="offer : ${pageInfo.list}" style="margin-bottom:50px;display:block;height:auto;">
+
+			<div class="offerPic">
+				<a href="">
+					<img src="img/icon.jpg" width="80%" height="80%" style="border:2px #6699FF; border-radius:100%; overflow:hidden;"/></a>
+			</div>
+
+			<div class="personalInfo">
+				<div id="University">
+					<h1 th:text="${offer.masterSchool}"></h1>
+				</div>
+
+				<div id="major">
+					<P th:text="${offer.admittedMajor}"></P>
+				</div>
+
+				<div id="oldMajor">
+					<p th:text="${offer.currentMajor}"></p>
+				</div>
+			</div>
+
+			<div class="scores">
+				<div class="clearfix"></div>
+				<div id="score">
+					<div id="scoreT">
+						<p>GPA</p>
+					</div>
+					<div id="scoreNo">
+						<P th:text="${offer.gpa}"></P>
+					</div>
+				</div>
+
+
+
+				<div id="score" >
+					<div class="toefl" th:if="${offer.TOEFL != null}">
+						<div id="scoreT">
+							<p>TOEFL</p>
+						</div>
+						<div id="scoreNo">
+							<P th:text="${offer.TOEFL}"></P>
+						</div>
+					</div>
+
+					<div class="ielts" th:if="${offer.IELTS != null}">
+						<div id="scoreT">
+							<p>IELTS</p>
+						</div>
+						<div id="scoreNo">
+							<P th:text="${offer.IELTS}"></P>
+						</div>
+					</div>
+
+				</div>
+
+				<div id="score">
+					<div class="gre" th:if="${offer.gre != null}">
+						<div id="scoreT">
+							<p>GRE</p>
+						</div>
+						<div id="scoreNo">
+							<P th:text="${offer.gre}"></P>
+						</div>
+					</div>
+
+					<div class="gmat" th:if="${offer.gmat != null}">
+						<div id="scoreT">
+							<p>GMAT</p>
+						</div>
+						<div id="scoreNo">
+							<P th:text="${offer.gmat}"></P>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<br>
+			<br>
+			<script type="text/javascript">
+			    function showdiv(){
+			        document.getElementById("hide").style.display="block";
+			        document.getElementById("strHref").innerHTML="Hide -";
+			        document.getElementById("strHref").href="javascript:hidediv()";
+			    }
+			    function hidediv(){
+			        document.getElementById("hide").style.display="none";
+			        document.getElementById("strHref").innerHTML="More +";
+			        document.getElementById("strHref").href="javascript:showdiv()";
+			    }
+    		</script>
+
+
+           
+			<div id="hide" style="display:none">
+			         <h3 style="margin:10px auto;">Experience</h3>
+            
+					 <p th:text="${offer.experience}" style="margin:0 auto;width: 80%;text-align: justify;"></p>
+				
+        	</div>
+
+        	<p class="slide">
+        	<a href="javascript:showdiv();" id="strHref" class="btn-slide" style="TEXT-DECORATION:none; color: #0b2e13;">More +</a>
+    		</p>
+
+
+
+		</div>
+	</div>
+
+
+
+	<div class="pagesJump" id = "pagesJump" style="margin-bottom: 200px;">
+		<div id="page">
+			<a th:href="@{/(page=1,keyword1=${keyword1})}" style="TEXT-DECORATION:none;">First page</a>
+		</div>
+		<div id="page">
+			<a th:href="@{/(page=${pageInfo.getPrePage()},keyword1=${keyword1})}" style="TEXT-DECORATION:none;">Pre</a>
+		</div>
+		<div id="page">
+			<a th:href="@{/(page=${pageInfo.getNextPage()},keyword1=${keyword1})}" style="TEXT-DECORATION:none;">Next</a>
+		</div>
+		<div id="page">
+			<a th:href="@{/(page=${pageInfo.getPages()},keyword1=${keyword1})}" style="TEXT-DECORATION:none;">Last page</a>
+		</div>
+	</div>
+	
+	<div id="upload" style="height:150px;margin-top: 50px;margin: 0 auto;background-color:#999999;text-align: center;">
+		    <button id="upload" type="button" style="margin-top: -50px;font-size: 80px;border: 1px solid #5B9BE3;color: white;
+            background-color: #5B9BE3;width: 100px;height: 100px;border-radius:50%;">
+            <a href="toPage?url=/user/upload" style="TEXT-DECORATION:none;color: white;">+</a></button>
+		    <h2 style="margin:0 auto;margin-top:20px;color: white;">Upload your offer</h2>
+	</div>
+
+	<div class="clearfix"></div>
+</form>
+</body>
+</html>

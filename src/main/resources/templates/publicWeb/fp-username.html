@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, iniitial-scale=1.0">
+    	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>enter Username</title>
+		<link th:href="@{/css/findPassword.css}" rel="stylesheet">
+	</head>
+
+	<body>
+        <form class="" th:action="@{/getUsername}"  method="post">
+		<div id="top_img">
+			<a href="#top">
+				<img th:src="@{/img/top.jpg}" src="images/top.jpg"  alt="top">
+			</a>
+		</div>
+		
+		<div class="container">
+			<h1 class="">Comfirm you are a memeber</h1>
+
+			<div class="needEnter">
+				<div id="userName">
+					<p>User Name:<span>*</span><p>
+						<input type="text" name="username" class="" required="required" placeholder="Please enter the username"/>
+				</div>
+			</div>
+
+			<div class="warning">
+				<p th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+				<!-- 如果用户不存在 需显示该用户名不存在 要求重新输入 -->
+				<!-- This user name does not exist, please re-enter or return to the registration screen. -->
+			</div>
+
+        	<div id="twoNextStage" style="margin: 20px auto;text-align:center;">
+				<button id="toverify" type="submit" class="" value="submit" style="float:none;margin: 0 auto;">Verify secret question</button>
+				
+			</div>
+			<div id="registration" style="float:none;margin: 0 auto;text-align:center;">
+			<a value="submit"  th:href="@{/register}">Registration</a></div>
+			<div class="clearfix"></div>
+        </div>
+        </form>
+	</body>
+
+</html>
